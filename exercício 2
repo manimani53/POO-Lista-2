@@ -1,0 +1,70 @@
+using System;
+class ClasseProduto
+{
+  string codigo, nome {get; set;}
+  string DataCadastro {get;}
+  decimal preco, estoque;
+
+  public decimal Preco
+  {
+    get {return _preco;}
+    set
+    {
+        if (value < 0)
+        {
+            Console.WriteLine("O preço não pode ser negativo.");
+        }
+
+        _preco = value;
+    }
+  }
+  public int Estoque
+  {
+    get { return _estoque; }
+    set
+    {
+        if (value < 0)
+        {
+            Console.WriteLine("O estoque não pode ser negativo.");
+            return;
+        }
+
+        _estoque = value;
+    }
+  }
+  public decimal ValorEmEstoque
+  {
+    get {return preco * estoque;}
+  }
+  public string Status
+  {
+    get
+    {
+      if (Estoque == 0)
+          return "Não tem nada"
+      else if (Estoque < 10)
+          return "Estoque baixo"
+      else 
+          return "Tem a vontade"
+    }
+  }
+//Construtor completo
+    public ClasseProduto(decimal preco, int estoque)
+    {
+        Preco = preco;
+        Estoque = estoque;
+    }
+
+    //Construtor com atributos essenciais
+    public ClasseProduto(decimal preco)
+    {
+        Preco = preco;
+        Estoque = 0;
+    }
+
+    //Construtor padrão
+    public ClasseProduto()
+    {
+        Preco = 0;
+        Estoque = 0;
+    }
