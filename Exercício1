@@ -1,0 +1,78 @@
+using System;
+public class ContaBancaria
+{
+    private decimal _saldo;
+    private string _numeroConta;
+    private string _titular;
+    private List<Transacao> _transacoes;
+
+    public ContaBancaria(string numeroConta, string titular) //as outras duas variáveis não são informadas pelo usuário diretamente
+    {
+      _numeroConta = numeroConta;
+      _titular = titular;
+      _saldo = 0m; //o uso do m é para garantir que o computasdor use o decimal e nao o int
+      _transacoes = new List<Transacao>();
+    }
+
+    public void Depositar (decimal valor)
+    {
+      if (valor <= 0 )
+      {
+        Console.WriteLine("O valor deve ser positivo");
+      }
+      _saldo += valor;
+      Console.WriteLine("Depósito no valor de: " + valor);
+    }
+
+    public void Sacar (decimal valor)
+    {
+      if (_saldo < valor)
+      {
+        Console.WriteLine("O valor não pode ser maior que o saldo")
+      }
+      _saldo -= valor
+      Console.WriteLine("Saque feito no valor de " + valor);
+
+    public void VerExtrato()
+    {
+      return List<Transacao> _transacoes;
+    }
+  
+}
+public string NumeroConta //como são propiriedades e não variáveis não se usa o termo "readonly" apenas omitimos o set. O get fornece leitura
+{
+    get { return _numeroConta; }
+}
+
+public string Titular
+{
+    get { return _titular; }
+}
+
+public decimal Saldo
+{
+    get { return _saldo; }
+}
+
+public enum TipoTransacao
+{
+    Deposito,
+    Saque,
+    Transferencia
+}
+
+public class Transacao
+{
+    public DateTime DataHora { get; }
+    public TipoTransacao Tipo { get; }
+    public decimal Valor { get; }
+    public string Descricao { get; }
+
+    public Transacao(DateTime dataHora, TipoTransacao tipo, decimal valor, string descricao)
+    {
+        DataHora = dataHora;
+        Tipo = tipo;
+        Valor = valor;
+        Descricao = descricao;
+    }
+}
