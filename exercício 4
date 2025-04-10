@@ -1,0 +1,75 @@
+public abstract class Pagamento
+{
+    public decimal Valor { get; set; }
+    public Data { get; set; }
+    public string Status { get; set; }
+
+    public abstract void Processar();
+    public abstract void GerarRecibo();
+}
+
+public class PagamentoCartao : Pagamento // uma classe herda a outra
+{
+  string bandeira {get; set;}
+  string numero {get; set;}
+  int parcelas {get; set;}
+
+  public override void Processar() //está usando o override pois a classe abstrata não foi defina. Obrigatório o uso do overrride 
+    {
+        //Botar a forma do processamento
+    }
+
+    public override void GerarRecibo()
+    {
+        
+    }
+}
+public class PagamentoBoleto : Pagamento
+{
+    public string CodigoDeBarras { get; set; }
+    public DataVencimento { get; set; }
+
+    public override void Processar()
+    {
+        
+    }
+
+    public override void GerarRecibo()
+    {
+        
+    }
+}
+public class PagamentoPix : Pagamento
+{
+    public string Chave { get; set; }
+    public string QRCode { get; set; }
+
+    public override void Processar()
+    {
+        
+    }
+
+    public override void GerarRecibo()
+    {
+        
+    }
+}
+public class ProcessadorPagamento
+{
+    public void Executar(Pagamento pagamento) // Aqui ele recebe qualquer parametro que receba pagamento. Todas as classses recebem a classe pagamento
+                                              // ASSIM NÃO FUNCIONA public void Executar(PagamentoPix, PagamentoCartao, PagamentoBoleto)
+    {
+        //o método ainda não faz nada
+    }
+}
+
+// nao estou entendendo como chamar o método polimorficamante
+
+/*Console.WriteLine("Pagamento processado:");
+        Console.WriteLine("Valor: " + pagamento.Valor);
+        Console.WriteLine("Data: " + pagamento.Data);
+        Console.WriteLine("Status: " + pagamento.Status);
+        Console.WriteLine("Tipo: " + pagamento.GetType().Name); // mostra o tipo real (ex: PagamentoPix)
+        Console.WriteLine("Auditoria registrada com sucesso.\n");*/ // Auditoria 
+
+
