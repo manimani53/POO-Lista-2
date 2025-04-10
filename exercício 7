@@ -1,0 +1,8 @@
+public interface IArmazenamento
+{
+    public void Salvar(string arquivo, byte[] dados);
+    public void Carregar(string arquivo);
+    public void Excluir(string arquivo);
+    List<string> Listar();
+}
+public abstract class ArmazenamentoBase : IArmazenamento
