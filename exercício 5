@@ -1,0 +1,54 @@
+public interface INotificador
+{
+    void EnviarNotificacao(string destinatario, string mensagem);
+    bool ValidarDestinatario(string destinatario);
+    string FormatoSuportado { get; }
+}
+public class NotificadorEmail : INotificador
+{
+    public string FormatoSuportado
+  {
+      get { return "E-mail"; }
+  }
+    public void EnviarNotificacao(string destinatario, string mensagem)
+    {
+        Console.WriteLine("Enviando e-mail para {destinatario}: {mensagem}");
+    }
+
+    public bool ValidarDestinatario(string destinatario)
+    {
+        //como faria para validar destinatário?
+    }
+}
+public class NotificadorSMS : INotificador
+{
+    public string FormatoSuportado
+  {
+      get { return "SMS"; }
+  }
+    public void EnviarNotificacao(string destinatario, string mensagem)
+    {
+        Console.WriteLine("Enviando sms para {destinatario}: {mensagem}");
+    }
+
+    public bool ValidarDestinatario(string destinatario)
+    {
+        
+    }
+}
+public class NotificadorPush : INotificador
+{
+    public string FormatoSuportado
+  {
+      get { return "push"; }
+  }
+    public void EnviarNotificacao(string destinatario, string mensagem)
+    {
+        Console.WriteLine("Enviando push para {destinatario}: {mensagem}");
+    }
+
+    public bool ValidarDestinatario(string destinatario)
+    {
+        
+    }
+}
