@@ -1,0 +1,42 @@
+public class Funcionario
+{
+    public string Nome { get; set; }
+    public string CPF { get; set; }
+    public string DataAdmissao { get; set; }
+    public decimal SalarioBase { get; set; }
+
+    public virtual decimal CalcularSalario()
+    {
+        return SalarioBase;
+    }
+
+    public virtual void ExibirDados()
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("CPF: " + CPF);
+        Console.WriteLine("Data de Admissão: " + DataAdmissao);
+        Console.WriteLine("Salário Base: " + SalarioBase);
+    }
+}
+public class Desenvolvedor : Funcionario
+{
+    public string Especialidade { get; set; }
+    public string Nivel { get; set; }
+}
+public class Gerente : Funcionario
+{
+    public string Equipe { get; set; }
+    public decimal BonusPorResultados { get; set; }
+}
+public class Atendente : Funcionario
+{
+    public int MetaAtendimentos { get; set; }
+    public decimal Comissao { get; set; }
+}
+public override void ExibirDados() // não entendi a necessidade de sobreescrever aqui
+    {
+        Console.WriteLine("Nome: " + Nome);
+        Console.WriteLine("CPF: " + CPF);
+        Console.WriteLine("Data de Admissão: " + DataAdmissao);
+        Console.WriteLine("Salário Base: " + SalarioBase);
+    }
